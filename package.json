@@ -14,7 +14,7 @@
     "currency",
     "exchange-rates"
   ],
-  "author": "",
+  "author": "I am",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^25.5.0",
