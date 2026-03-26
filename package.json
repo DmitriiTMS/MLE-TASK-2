@@ -1,0 +1,27 @@
+{
+  "name": "2-task",
+  "version": "1.0.0",
+  "description": "Telegram bot для получения курса валют",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "currency",
+    "exchange-rates"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
