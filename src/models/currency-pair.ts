@@ -17,8 +17,5 @@ export class CurrencyPair {
     
     return new CurrencyPair(from, to);
   }
-
-  toString(): string {
-    return `${this.from}-${this.to}`;
-  }
+ 
 }

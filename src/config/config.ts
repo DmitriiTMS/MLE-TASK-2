@@ -30,7 +30,7 @@ export class Config implements IConfig {
         this.exchangeRatesApiUrl = apiUrl
     }
 
-     public getTelegramApiUrl(): string {
+    public getTelegramApiUrl(): string {
         return this.telegramApiUrl;
     }
 

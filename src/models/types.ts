@@ -33,3 +33,14 @@ export interface ITelegramResponse {
   result?: any;
   description?: string;
 }
+
+export interface IExchangeRateResponse {
+  base: string;
+  rates: Record<string, number>;
+  date: string;
+}
+
+export interface IApiError {
+  error: string;
+  status?: number;
+}

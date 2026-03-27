@@ -59,7 +59,7 @@ const logger = new Logger();
 const config = new Config();
 const httpClient = new HttpClientAxios(logger);
 const telegramService = new TelegramService(config, logger, httpClient);
-const exchangeRatesService = new ExchangeRatesService();
+const exchangeRatesService = new ExchangeRatesService(config, logger, httpClient);
 const commandFactory = new CommandFactory(exchangeRatesService, logger);
 const messageHandler = new MessageHandler(logger, commandFactory, telegramService);
 
