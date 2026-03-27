@@ -2,7 +2,7 @@ import { ICommand } from './command.interface';
 import { ITelegramMessage } from '../models/types';
 import { ILogger } from '../utils/logger.interface';
 import { ITelegramService } from '../services/telegram/telegram.interface';
-import { ICurrencyService } from '../services/currency-service.interface.ts/currency-service.interface';
+import { ICurrencyService } from '../services/currency-service/currency-service.interface';
 import { CurrencyPair } from '../models/currency-pair';
 
 export class CurrencyCommand implements ICommand {

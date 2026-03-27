@@ -2,7 +2,7 @@ import { ICommand } from './command.interface';
 import { StartCommand } from './start-command';
 import { CurrencyCommand } from './currency-command';
 import { ILogger } from '../utils/logger.interface';
-import { ICurrencyService } from '../services/currency-service.interface.ts/currency-service.interface';
+import { ICurrencyService } from '../services/currency-service/currency-service.interface';
 import { StopCommand } from './stop-command';
 
 export class CommandFactory {

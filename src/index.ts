@@ -3,7 +3,7 @@ import { CommandFactory } from './commands/command-factory';
 import { Config } from './config/config';
 import { MessageHandler } from './handlers/message-handler';
 import { IMessageHandler } from './handlers/message-handler.interface';
-import { ExchangeRatesService } from './services/currency-service.interface.ts/exchange-rates-service';
+import { ExchangeRatesService } from './services/currency-service/exchange-rates-service';
 import { TelegramService } from './services/telegram/telegram-service';
 import { ITelegramService } from './services/telegram/telegram.interface';
 import { Logger } from './utils/logger';
