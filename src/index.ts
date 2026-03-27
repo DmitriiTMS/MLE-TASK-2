@@ -1,5 +1,9 @@
 import { HttpClientAxios } from './api/http-client';
+import { CommandFactory } from './commands/command-factory';
 import { Config } from './config/config';
+import { MessageHandler } from './handlers/message-handler';
+import { IMessageHandler } from './handlers/message-handler.interface';
+import { ExchangeRatesService } from './services/currency-service.interface.ts/exchange-rates-service';
 import { TelegramService } from './services/telegram/telegram-service';
 import { ITelegramService } from './services/telegram/telegram.interface';
 import { Logger } from './utils/logger';
@@ -11,7 +15,8 @@ class Bot {
 
     constructor(
         private readonly logger: ILogger,
-        private readonly telegramService: ITelegramService
+        private readonly telegramService: ITelegramService,
+        private readonly messageHandler: IMessageHandler
     ) { }
 
     async start(): Promise<void> {
@@ -31,7 +36,7 @@ class Bot {
 
                 for (const update of updates) {
                     if (update.message) {
-                        console.log(update.message);
+                        await this.messageHandler.handleMessage(update.message);
                         this.lastUpdateId = update.update_id;
                     }
                 }
@@ -54,8 +59,12 @@ const logger = new Logger();
 const config = new Config();
 const httpClient = new HttpClientAxios(logger);
 const telegramService = new TelegramService(config, logger, httpClient);
+const exchangeRatesService = new ExchangeRatesService();
+const commandFactory = new CommandFactory(exchangeRatesService, logger);
+const messageHandler = new MessageHandler(logger, commandFactory, telegramService);
 
-const bot = new Bot(logger, telegramService);
+const bot = new Bot(logger, telegramService, messageHandler);
+
 bot.start().catch(error => {
     logger.error('Failed to start bot', error);
     process.exit(1);

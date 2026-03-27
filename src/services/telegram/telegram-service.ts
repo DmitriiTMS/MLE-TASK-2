@@ -1,7 +1,6 @@
-
 import { IHttpClient } from '../../api/http-client.interface';
 import { Config } from '../../config/config';
-import { TelegramResponse, TelegramUpdate } from '../../models/types';
+import { ITelegramResponse, ITelegramUpdate } from '../../models/types';
 import { ILogger } from '../../utils/logger.interface';
 import { ITelegramService } from './telegram.interface';
 
@@ -20,13 +19,13 @@ export class TelegramService implements ITelegramService {
   }
 
  
-  async getUpdates(offset?: number): Promise<TelegramUpdate[]> {
+  async getUpdates(offset?: number): Promise<ITelegramUpdate[]> {
 
     const url = `${this.telegramApiUrl}${this.telegramBotToken}/getUpdates`;
     const params = offset ? { offset } : undefined;
 
     try {
-      const response = await this.httpClientAxios.get<TelegramResponse>(url, { params });
+      const response = await this.httpClientAxios.get<ITelegramResponse>(url, { params });
 
       if (!response.ok) {
         throw new Error(response.description || 'Failed to get updates');
@@ -39,14 +38,13 @@ export class TelegramService implements ITelegramService {
     }
   }
 
-
   async sendMessage(chatId: number, text: string): Promise<void> {
     const url = `${this.telegramApiUrl}${this.telegramBotToken}/sendMessage`;
 
     try {
       this.logger.info(`Sending message to chat ${chatId}`, { text });
 
-      const response = await this.httpClientAxios.post<TelegramResponse>(url, {
+      const response = await this.httpClientAxios.post<ITelegramResponse>(url, {
         chat_id: chatId,
         text: text,
       });

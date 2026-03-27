@@ -1,17 +1,17 @@
-export interface TelegramUpdate {
+export interface ITelegramUpdate {
   update_id: number;
-  message?: TelegramMessage;
+  message?: ITelegramMessage;
 }
 
-export interface TelegramMessage {
+export interface ITelegramMessage {
   message_id: number;
-  from: TelegramUser;
-  chat: TelegramChat;
+  from: ITelegramUser;
+  chat: ITelegramChat;
   text?: string;
   date: number;
 }
 
-export interface TelegramUser {
+export interface ITelegramUser {
   id: number;
   is_bot: boolean;
   first_name: string;
@@ -19,7 +19,7 @@ export interface TelegramUser {
   username?: string;
 }
 
-export interface TelegramChat {
+export interface ITelegramChat {
   id: number;
   type: string;
   title?: string;
@@ -28,7 +28,7 @@ export interface TelegramChat {
   last_name?: string;
 }
 
-export interface TelegramResponse {
+export interface ITelegramResponse {
   ok: boolean;
   result?: any;
   description?: string;
